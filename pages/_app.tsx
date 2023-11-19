@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ClerkProvider } from '@clerk/nextjs';
 import { createGlobalStyle } from 'styled-components';
 import { GlobalStyles } from 'twin.macro';
 
@@ -18,21 +19,23 @@ const App = ({ Component, pageProps }) => {
   const [isRetailOpen, setIsRetailOpen] = React.useState<boolean>(false);
 
   return (
-    <React.StrictMode>
-      <GlobalProvider>
-        <GlobalStyles />
-        {/* <GlobalStyle $isSidebarOpen={isSidebarOpen} /> */}
-        <Overlay isSidebarOpen={isSidebarOpen} isQuickViewOpen={isMenuOpen} />
-        {/* <Header /> */}
-        {/* <MenuIcon isMenuIconActive={isSidebarOpen} setIsMenuIconActive={setIsSidebarOpen} /> */}
-        {/* <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} /> */}
-        <Alert />
-        <Modal />
-        <Body>
-          <Component {...pageProps} />
-        </Body>
-      </GlobalProvider>
-    </React.StrictMode>
+    <ClerkProvider>
+      <React.StrictMode>
+        <GlobalProvider>
+          <GlobalStyles />
+          {/* <GlobalStyle $isSidebarOpen={isSidebarOpen} /> */}
+          <Overlay isSidebarOpen={isSidebarOpen} isQuickViewOpen={isMenuOpen} />
+          {/* <Header /> */}
+          {/* <MenuIcon isMenuIconActive={isSidebarOpen} setIsMenuIconActive={setIsSidebarOpen} /> */}
+          {/* <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} /> */}
+          <Alert />
+          <Modal />
+          <Body>
+            <Component {...pageProps} />
+          </Body>
+        </GlobalProvider>
+      </React.StrictMode>
+    </ClerkProvider>
   );
 };
 

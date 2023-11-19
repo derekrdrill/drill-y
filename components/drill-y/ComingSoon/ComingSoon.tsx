@@ -1,4 +1,5 @@
 import React from 'react';
+import { SignOutButton } from '@clerk/nextjs';
 import tw from 'twin.macro';
 import styled from '@emotion/styled';
 import { Grid, Typography } from '@mui/material';
@@ -25,6 +26,7 @@ export const ComingSoon = () => (
         Some very important people are working hard to deploy this site 🚀
       </Typography>
     </ComingSoonTextContainer>
+    <SignOutButton />
   </>
 );
 
